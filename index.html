@@ -71,7 +71,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
                         url('https://cf-templates-1gclp1pz85mda-us-east-1.s3.us-east-1.amazonaws.com/PHOTO-2026-02-13-20-35-09.jpg') center/cover;
             display: flex;
             align-items: center;
@@ -140,20 +140,13 @@
         section h2 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
-            color: var(--primary);
+            color: black;
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
         }
 
-        section h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: var(--secondary);
-            margin: 1rem auto;
-        }
+        
 
         /* Countdown */
         .countdown-section {
@@ -166,11 +159,12 @@
             gap: 2rem;
             max-width: 900px;
             margin: 0 auto;
+            
         }
 
         .countdown-box {
             background: var(--white);
-            border: 2px solid var(--secondary);
+            border: 0px solid var(--secondary);
             border-radius: 15px;
             padding: 2rem 1rem;
             text-align: center;
@@ -195,7 +189,7 @@
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 0.15em;
-            color: var(--secondary);
+            color: black;
             margin-top: 0.5rem;
         }
 
@@ -612,13 +606,13 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero" style="center; padding: 10px;">
+    <section id="inicio" class="hero">
         <div class="hero-content">
             <h1>
-                <div class="logo-container" style="width: 150px;">
-                    <a href="/">
+                <div class="logo-container" style="display: flex; justify-content: center; align-items: center; width: 150px;">
+                   
                         <img src="https://cf-templates-1gclp1pz85mda-us-east-1.s3.us-east-1.amazonaws.com/Recurso+5.png" alt="DAAL" style="width: 150%; height: auto;">
-                    </a>
+                   
                 </div>
                 
             </h1>
@@ -655,22 +649,24 @@
         <h2>Nuestra Historia</h2>
         <div class="story-content">
             <p>
-                Nos conocimos en un café un martes lluvioso de septiembre. Él pidió un cappuccino, 
-                ella un té de manzanilla. Una conversación casual se convirtió en horas de risa y 
-                conexión que ninguno de los dos esperaba.
-            </p>
-            <p>
-                Desde ese día, hemos compartido aventuras, sueños y momentos que nos han hecho crecer 
-                juntos. Hemos viajado, bailado bajo la lluvia, cocinado cenas improvisadas y construido 
-                un hogar lleno de amor.
-            </p>
-            <p>
-                Ahora, después de cinco años maravillosos, estamos listos para el siguiente capítulo 
-                de nuestra historia: convertirnos en marido y mujer en el lugar más especial que 
-                podríamos imaginar: Santa Marta, donde el mar y las montañas se encuentran.
-            </p>
+                Nos conocimos por casualidad, gracias a amigos en común. La verdad… yo apenas lo vi no le presté mucha atención 🙈, pero Julio sí, desde el primer momento me “tiró el ojo” jajaja.
 
-            <div class="timeline">
+            </p>
+            <p>
+                Ese día fuimos con nuestros amigos a Playa Salguero, a tomarnos alguito y hablar frente al mar. Fue un plan sencillo, pero muy chévere. Julio casi no me hablaba… hasta que estuvo un poquito tomado 😅 y decidió preguntarme cómo me llamaba y empezar la conversación.
+
+            </p>
+            <p>
+                De ahí comenzamos a hablar y a conectar. Más tarde nos fuimos a una discoteca, bailamos, reímos y fue justo allí donde Julio me robó un beso. Entre música, risas y miradas cómplices, intercambiamos números. Yo, sinceramente, pensé que nunca más volveríamos a hablar…
+
+            </p>
+            <p>
+                Pero al día siguiente apareció. Me invitó a otro plan, y sin darme cuenta empezamos a escribir nuestra historia.
+            </p>
+            <p>
+                Desde entonces no nos separamos. Lo que empezó como una salida casual entre amigos se convirtió en el amor más bonito, en planes juntos, sueños compartidos y una vida que decidimos construir de la mano.
+            </p>
+                <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>Primer Encuentro</h3>
