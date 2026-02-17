@@ -145,7 +145,14 @@
             margin-bottom: 3rem;
             position: relative;
         }
-
+        section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: black;
+    margin: 1rem auto;
+}
         
 
         /* Countdown */
@@ -398,7 +405,7 @@
         }
 
         .rsvp h2::after {
-            background: var(--secondary);
+            background: black;
         }
 
         .rsvp-form {
