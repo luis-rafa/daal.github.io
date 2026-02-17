@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>María & Carlos - Nuestra Boda en Santa Marta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2C5F6F;
+            --secondary: #D4A574;
+            --accent: #E88D67;
+            --sand: #F7F3ED;
+            --white: #FFFFFF;
+            --dark: #1A1A1A;
+            --light-gray: #F5F5F5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 95, 111, 0.4), rgba(44, 95, 111, 0.6)),
+                        url('https://cf-templates-1gclp1pz85mda-us-east-1.s3.us-east-1.amazonaws.com/PHOTO-2026-02-13-20-35-09.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero .ampersand {
+            font-size: clamp(4rem, 10vw, 9rem);
+            font-style: italic;
+            color: var(--secondary);
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        .hero .date {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-top: 2rem;
+            opacity: 0.95;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '↓';
+            font-size: 2rem;
+            color: var(--white);
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 1rem auto;
+        }
+
+        /* Countdown */
+        .countdown-section {
+            background: var(--sand);
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .countdown-box {
+            background: var(--white);
+            border: 2px solid var(--secondary);
+            border-radius: 15px;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .countdown-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-top: 0.5rem;
+        }
+
+        /* Our Story */
+        .our-story {
+            background: var(--white);
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline {
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--secondary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        .timeline-content {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 45%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--sand);
+        }
+
+        /* Event Details */
+        .event-details {
+            background: var(--sand);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .event-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--white);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .event-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-body {
+            padding: 2rem;
+        }
+
+        .event-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .event-info strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .event-info p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .map-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .map-button:hover {
+            background: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* Accommodation */
+        .accommodation {
+            background: var(--white);
+        }
+
+        .hotel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .hotel-card {
+            background: var(--light-gray);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .hotel-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .hotel-rating {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* RSVP */
+        .rsvp {
+            background: linear-gradient(135deg, var(--primary), #1A4A5A);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .rsvp h2 {
+            color: var(--white);
+        }
+
+        .rsvp h2::after {
+            background: var(--secondary);
+        }
+
+        .rsvp-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.9);
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .submit-button {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .submit-button:hover {
+            background: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* Registry */
+        .registry {
+            background: var(--sand);
+        }
+
+        .registry-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .registry-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .gift-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .gift-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            min-width: 250px;
+        }
+
+        .gift-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery Preview */
+        .gallery {
+            background: var(--white);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .photo-placeholder {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .hashtag {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 60px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .rsvp-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#historia">Nuestra Historia</a></li>
+            <li><a href="#evento">El Evento</a></li>
+            <li><a href="#alojamiento">Alojamiento</a></li>
+            <li><a href="#rsvp">Confirmar</a></li>
+            <li><a href="#registro">Regalos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>
+                Isa
+                <span class="ampersand">&</span>
+                Julio
+            </h1>
+            <p class="date">25 DE ABRIL • 2026 • SANTA MARTA</p>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+        <h2>Faltan...</h2>
+        <div class="countdown" id="countdown">
+            <div class="countdown-box">
+                <span class="countdown-number" id="days">000</span>
+                <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Minutos</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Segundos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="historia" class="our-story">
+        <h2>Nuestra Historia</h2>
+        <div class="story-content">
+            <p>
+                Nos conocimos en un café un martes lluvioso de septiembre. Él pidió un cappuccino, 
+                ella un té de manzanilla. Una conversación casual se convirtió en horas de risa y 
+                conexión que ninguno de los dos esperaba.
+            </p>
+            <p>
+                Desde ese día, hemos compartido aventuras, sueños y momentos que nos han hecho crecer 
+                juntos. Hemos viajado, bailado bajo la lluvia, cocinado cenas improvisadas y construido 
+                un hogar lleno de amor.
+            </p>
+            <p>
+                Ahora, después de cinco años maravillosos, estamos listos para el siguiente capítulo 
+                de nuestra historia: convertirnos en marido y mujer en el lugar más especial que 
+                podríamos imaginar: Santa Marta, donde el mar y las montañas se encuentran.
+            </p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Primer Encuentro</h3>
+                        <span class="timeline-date">Septiembre 2019</span>
+                        <p>Un café casual que cambió nuestras vidas para siempre.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Primera Aventura</h3>
+                        <span class="timeline-date">Diciembre 2019</span>
+                        <p>Nuestro primer viaje juntos a Cartagena, donde descubrimos nuestro amor por el Caribe.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Viviendo Juntos</h3>
+                        <span class="timeline-date">Junio 2021</span>
+                        <p>Decidimos mudarnos juntos y crear nuestro propio hogar.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>La Propuesta</h3>
+                        <span class="timeline-date">Agosto 2024</span>
+                        <p>En la playa de Taganga, con el atardecer como testigo, Carlos le pidió matrimonio a María.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>¡Nuestra Boda!</h3>
+                        <span class="timeline-date">Abril 2026</span>
+                        <p>Celebraremos nuestro amor rodeados de familia, amigos y la belleza del Caribe.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="evento" class="event-details">
+        <h2>Detalles del Evento</h2>
+        <div class="events-grid">
+            <!-- Ceremony -->
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-icon">💒</div>
+                    <h3>Ceremonia</h3>
+                </div>
+                <div class="event-body">
+                    <div class="event-info">
+                        <strong>Fecha y Hora</strong>
+                        <p>Viernes, 25 de Abril de 2026<br>4:00 PM</p>
+                    </div>
+                    <div class="event-info">
+                        <strong>Lugar</strong>
+                        <p>Capilla San Francisco de Asís<br>Centro Histórico, Santa Marta</p>
+                    </div>
+                    <div class="event-info">
+                        <strong>Código de Vestimenta</strong>
+                        <p>Formal / Cocktail<br>Colores claros sugeridos</p>
+                    </div>
+                    <a href="#" class="map-button">Ver en Mapa</a>
+                </div>
+            </div>
+
+            <!-- Reception -->
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-icon">🎉</div>
+                    <h3>Recepción</h3>
+                </div>
+                <div class="event-body">
+                    <div class="event-info">
+                        <strong>Fecha y Hora</strong>
+                        <p>Viernes, 25 de Abril de 2026<br>6:30 PM - 12:00 AM</p>
+                    </div>
+                    <div class="event-info">
+                        <strong>Lugar</strong>
+                        <p>Hacienda Vista Mar<br>Vía al Rodadero, Santa Marta</p>
+                    </div>
+                    <div class="event-info">
+                        <strong>Incluye</strong>
+                        <p>Cena, barra libre, música en vivo y DJ</p>
+                    </div>
+                    <a href="#" class="map-button">Ver en Mapa</a>
+                </div>
+            </div>
+
+            <!-- Welcome Event -->
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-icon">🌅</div>
+                    <h3>Bienvenida</h3>
+                </div>
+                <div class="event-body">
+                    <div class="event-info">
+                        <strong>Fecha y Hora</strong>
+                        <p>Jueves, 24 de Abril de 2026<br>7:00 PM</p>
+                    </div>
+                    <div class="event-info">
+                        <strong>Lugar</strong>
+                        <p>Restaurante La Cocina de Pepina<br>Carrera 3 #19-59, Santa Marta</p>
+                    </div>
+                    <div class="event-info">
+                        <strong>Detalles</strong>
+                        <p>Cena informal para invitados que lleguen temprano</p>
+                    </div>
+                    <a href="#" class="map-button">Ver en Mapa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodation Section -->
+    <section id="alojamiento" class="accommodation">
+        <h2>Alojamiento</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem; color: #555;">
+            Hemos pre-reservado bloques de habitaciones en los siguientes hoteles con tarifas especiales 
+            para nuestros invitados. Menciona "Boda Rodríguez-García" al reservar.
+        </p>
+        <div class="hotel-grid">
+            <div class="hotel-card">
+                <h3>Hotel Casa Carolina</h3>
+                <div class="hotel-rating">★★★★★</div>
+                <p style="color: #555; margin-bottom: 1rem;">
+                    Boutique hotel en el centro histórico. Habitaciones con encanto colonial y piscina en la terraza.
+                </p>
+                <p style="font-weight: 600; color: var(--primary);">Desde $180 USD/noche</p>
+                <p style="font-size: 0.9rem; color: #777;">+57 5 421 4242</p>
+            </div>
+
+            <div class="hotel-card">
+                <h3>Hotel Irotama Resort</h3>
+                <div class="hotel-rating">★★★★★</div>
+                <p style="color: #555; margin-bottom: 1rem;">
+                    Resort frente al mar con spa, varios restaurantes y actividades. Perfecto para familias.
+                </p>
+                <p style="font-weight: 600; color: var(--primary);">Desde $220 USD/noche</p>
+                <p style="font-size: 0.9rem; color: #777;">+57 5 438 4000</p>
+            </div>
+
+            <div class="hotel-card">
+                <h3>Hotel Boutique Don Pepe</h3>
+                <div class="hotel-rating">★★★★</div>
+                <p style="color: #555; margin-bottom: 1rem;">
+                    Ubicación céntrica, excelente relación calidad-precio. A 5 minutos del lugar de la ceremonia.
+                </p>
+                <p style="font-weight: 600; color: var(--primary);">Desde $120 USD/noche</p>
+                <p style="font-size: 0.9rem; color: #777;">+57 5 423 4646</p>
+            </div>
+
+            <div class="hotel-card">
+                <h3>Casa Familiar</h3>
+                <div class="hotel-rating">★★★★</div>
+                <p style="color: #555; margin-bottom: 1rem;">
+                    Para grupos grandes. Casas y apartamentos vacacionales cerca de todos los eventos.
+                </p>
+                <p style="font-weight: 600; color: var(--primary);">Desde $100 USD/noche</p>
+                <p style="font-size: 0.9rem; color: #777;">Airbnb / Booking.com</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; text-align: center; background: var(--white); padding: 2rem; border-radius: 15px; max-width: 700px; margin-left: auto; margin-right: auto;">
+            <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 1rem;">Información Adicional</h3>
+            <p style="color: #555; line-height: 1.8;">
+                <strong>Aeropuerto:</strong> Simón Bolívar International (SMR) - 20 minutos del centro<br>
+                <strong>Transporte:</strong> Organizaremos shuttles desde los hoteles principales<br>
+                <strong>Clima:</strong> 25-32°C, cálido y soleado<br>
+                <strong>Recomendación:</strong> Llegar 1-2 días antes para disfrutar de Santa Marta
+            </p>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp">
+        <h2>Confirma tu Asistencia</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+            Por favor confirma antes del 1 de Marzo de 2026
+        </p>
+        <form class="rsvp-form" id="rsvpForm">
+            <div class="form-group">
+                <label for="nombre">Nombre Completo *</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="asistencia">¿Asistirás? *</label>
+                <select id="asistencia" name="asistencia" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="si">Sí, asistiré con alegría</option>
+                    <option value="no">No podré asistir</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="invitados">Número de Invitados (incluyéndote) *</label>
+                <select id="invitados" name="invitados" required>
+                    <option value="1">1 persona</option>
+                    <option value="2">2 personas</option>
+                    <option value="3">3 personas</option>
+                    <option value="4">4 personas</option>
+                    <option value="5">5+ personas</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="restricciones">Restricciones Alimentarias</label>
+                <textarea id="restricciones" name="restricciones" rows="3" placeholder="Vegetariano, vegano, alergias, etc."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cancion">Canción que no puede faltar en la pista 🎵</label>
+                <input type="text" id="cancion" name="cancion" placeholder="Tu canción favorita para bailar">
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje para los Novios</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Comparte tus buenos deseos..."></textarea>
+            </div>
+            <button type="submit" class="submit-button">Enviar Confirmación</button>
+        </form>
+    </section>
+
+    <!-- Registry Section -->
+    <section id="registro" class="registry">
+        <h2>Mesa de Regalos</h2>
+        <div class="registry-content">
+            <p>
+                Su presencia es nuestro mejor regalo, pero si desean tener un detalle con nosotros, 
+                hemos creado las siguientes opciones:
+            </p>
+            
+            <div class="gift-options">
+                <div class="gift-card">
+                    <h3>🏠 Liverpool</h3>
+                    <p style="color: #555; margin: 1rem 0;">Mesa de regalos para nuestro nuevo hogar</p>
+                    <p style="font-weight: 600; color: var(--primary);">Evento: 12345678</p>
+                </div>
+
+                <div class="gift-card">
+                    <h3>✈️ Luna de Miel</h3>
+                    <p style="color: #555; margin: 1rem 0;">Contribución para nuestra luna de miel en Europa</p>
+                    <p style="font-weight: 600; color: var(--primary);">Transferencia disponible</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem; font-style: italic; color: #555;">
+                Para más detalles sobre transferencias, por favor contáctanos directamente.
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Preview -->
+    <section class="gallery">
+        <h2>Nuestros Momentos</h2>
+        <div class="photo-grid">
+            <div class="photo-placeholder">📷</div>
+            <div class="photo-placeholder">💑</div>
+            <div class="photo-placeholder">🌅</div>
+            <div class="photo-placeholder">❤️</div>
+            <div class="photo-placeholder">🏖️</div>
+            <div class="photo-placeholder">🎉</div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem; color: #777; font-style: italic;">
+            Pronto compartiremos más fotos de nuestra historia juntos
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>No podemos esperar para celebrar con ustedes</p>
+        <p>María & Carlos</p>
+        <p class="hashtag">#MariaYCarlos2026</p>
+        <p style="font-size: 0.9rem; margin-top: 2rem; opacity: 0.8;">
+            Para preguntas: bodaensamarta@gmail.com | +57 300 123 4567
+        </p>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        const weddingDate = new Date('April 25, 2026 16:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(3, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div style="grid-column: 1/-1; font-size: 2rem;">¡Hoy es el gran día! 💑</div>';
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // RSVP Form Handler
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por confirmar tu asistencia! Te enviaremos un email de confirmación pronto.');
+            // Aquí puedes agregar integración con servicios como Formspree, Google Forms, etc.
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
